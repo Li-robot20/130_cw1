@@ -4,7 +4,7 @@ function [latitude, longitude, height, v_north, v_east, v_down, outlier] = GNSS_
 %   sate_index           Satellite number
 %   Pseudoranges         Corresponding Pseudoranges data
 %   Pseudorangesrates    Corresponding Pseudorangesrates data
-%   detected_outlier     detected outlier information, including time and Satellite number
+%   detected_outlier     Detected outlier to remove
 % Outputs:
 %   L_b                 latitude (rad)
 %   lambda_b            longitude (rad)
@@ -12,7 +12,7 @@ function [latitude, longitude, height, v_north, v_east, v_down, outlier] = GNSS_
 %   v_north             north velocity of body frame w.r.t. ECEF frame
 %   v_east              east velocity of body frame w.r.t. ECEF frame
 %   v_down              down velocity of body frame w.r.t. ECEF frame    
-%   outlier             detected outlier information, including time and Satellite number 
+%   outlier             detected outlier information after remove
 
 % init position and velocity
 r_ea = [0;0;0];

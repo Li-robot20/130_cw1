@@ -5,13 +5,13 @@ sate_index = [5, 6, 7, 9, 10, 11, 15, 30];
 Motion_1 = zeros(length(Pseudoranges)-1, 6);
 n = 1;
 v_down = [];
-outlier_first =[];
+outlier_LS_first =[];
 Heights = [];
 while n<=length(Pseudoranges)-1
     Motion_1(n,1) = Pseudoranges(n+1,1);
     [Motion_1(n,2), Motion_1(n,3), height_temp, Motion_1(n,4), Motion_1(n,5), v_down_temp, outlier_temp] = GNSS_LS_solver_detect_outlier(0.5*(n-1), sate_index, Pseudoranges, Pseudorangerates);
     Heights = [Heights; height_temp];
-    outlier_first = [outlier_first; outlier_temp];
+    outlier_LS_first = [outlier_LS_first; outlier_temp];
     v_down = [v_down; v_down_temp];
     n = n+1;
 end
@@ -19,13 +19,13 @@ end
 % Recalculate to remove the outlier
 n = 1;
 v_down = [];
-outlier_second = [];
+outlier_LS_second = [];
 Heights = [];
 while n<=length(Pseudoranges)-1
     Motion_1(n,1) = Pseudoranges(n+1, 1);
-    [Motion_1(n,2), Motion_1(n,3), height_temp, Motion_1(n,4), Motion_1(n,5), v_down_temp, outlier_temp] = GNSS_LS_solver_remove_outlier(0.5*(n-1), sate_index, Pseudoranges, Pseudorangerates, outlier_first);
+    [Motion_1(n,2), Motion_1(n,3), height_temp, Motion_1(n,4), Motion_1(n,5), v_down_temp, outlier_temp] = GNSS_LS_solver_remove_outlier(0.5*(n-1), sate_index, Pseudoranges, Pseudorangerates, outlier_LS_first);
     Heights = [Heights; height_temp];
-    outlier_second = [outlier_second; outlier_temp];
+    outlier_LS_second = [outlier_LS_second; outlier_temp];
     v_down = [v_down; v_down_temp];
     n = n+1;
 end
