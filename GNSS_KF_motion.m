@@ -39,7 +39,7 @@ while i<length(Pseudoranges)
     [L_b,lambda_b,h_b,v_eb_n] = pv_ECEF_to_NED(Xk_new(1:3), Xk_new(4:6));
     Lati = L_b * rad_to_deg;
     Longti = lambda_b * rad_to_deg;
-    epoch = [0.5*(i-1),Lati,Longti,v_eb_n(1:2).', Heading(i)];
+    epoch = [0.5*(i-1),Lati,Longti,v_eb_n(1:2).'];
     Motion_2 = [Motion_2; epoch];
     i = i + 1;
 end

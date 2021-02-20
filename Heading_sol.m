@@ -20,3 +20,5 @@ for i = 1:length(DR)-1
     P_kmins1 = P_k_plus;
 end
 
+Motion_1(:,6) = Heading;
+Motion_2(:,6) = Heading;
